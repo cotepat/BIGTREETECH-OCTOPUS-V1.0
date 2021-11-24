@@ -1,10 +1,11 @@
 # [切换到中文版](./README_zh_cn.md)
 
-# How to use Klipper on Octopus (Pro)
+# How to use Klipper on Octopus
 
 ## NOTE: 
 
 * This motherboard comes with bootloader which allows firmware update through SD card. We recommend using SD card to update firmware instead of DFU. If you have ever used DFU to upload firmware, you can use the instructions [here](/Firmware/DFU%20Update%20bootloader) to restore the bootloader of this motherboard. And pay attention to distinguish whether your motherboard MCU is `STM32F446` or `STM32F429`.
+* [BTT_OctoPus_Voron2_Config.cfg](./BTT_OctoPus_Voron2_Config.cfg) is the reference configuration file of Voron2.4. you can modify your own configuration file based on this. (Note: there is no `position_max` of XYZ set in this file. We offer three sizes of 250/300/350mm. You must select one to uncomment or set your own custom size)
 
 ## Pinout
 ### Raspberry pi pinout
@@ -100,7 +101,7 @@
 ## Configure the printer parameters
 ### Basic configuration
 1. Refer to [klipper's official installation](https://www.klipper3d.org/Installation.html) to `Configuring OctoPrint to use Klipper`
-2. Refer to [klipper's official installation](https://www.klipper3d.org/Installation.html) to `Configuring Klipper`. And use the configuration file [Octopus klipper.cfg](./Octopus%20klipper.cfg) as the underlying `printer.cfg`, which includes all the correct pinout for Octopus
+2. Refer to [klipper's official installation](https://www.klipper3d.org/Installation.html) to `Configuring Klipper`. And use the configuration file [BTT_OctoPus_Voron2_Config.cfg](./BTT_OctoPus_Voron2_Config.cfg) as the underlying `printer.cfg`, which includes all the correct pinout for Octopus
 3. Refer to [klipper's official Config_Reference](https://www.klipper3d.org/Config_Reference.html) to configure the features you want.
 4. If you use USB to communicate with raspberry pi, run the `ls /dev/serial/by-id/*` command in raspberry pi to get the correct ID number of the motherboard, and set the correct ID number in `printer.cfg`. And wiring reference [here](#raspberry-pi-is-powered-by-an-external-5v-adapter-and-communicates-with-octopus-pro-via-usb)
     ```
@@ -120,7 +121,7 @@
      <img src=Images/cfg_uart.png/><br/>
 
 ### LCD12864 (RepRapDiscount 128x64 Full Graphic Smart Controller): Set the `display` in `printer.cfg` to the following parameters
-   ```
+   ``` 
    [display]
    lcd_type: st7920
    cs_pin: EXP1_4
@@ -136,7 +137,7 @@
    <img src=Images/cfg_lcd12864.png/><br/>
 
 ### LCD2004 (RepRapDiscount 2004 Smart Controller): Set the `display` in `printer.cfg` to the following parameters
-   ```
+   ``` 
    [display]
    lcd_type: hd44780
    rs_pin: EXP1_4
@@ -155,7 +156,7 @@
    <img src=Images/cfg_lcd2004.png/><br/>
 
 ### Mini12864 (Mini 12864Panel with neopixel backlight leds): Set the `display` in `printer.cfg` to the following parameters
-   ```
+   ```    
    [display]
    lcd_type: uc1701
    cs_pin: EXP1_3
